@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1= title
+  p Search results echo  
+  p 
+  div(class="container-fluid")
+        div(class="row")
+            -
+                let echo = [
+                    {
+                        "name": "DAN",
+                        "model": "elite" ,
+                        "frequency": 20
+                    },
+                    {
+                        "name": "Estherino",
+                        "model": "pro" ,
+                        "frequency": 30
+                    },
+                    {
+                        "name": "Suzaku",
+                        "model": "elite pro max" ,
+                        "frequency": 40
+                    },                   
+                ]
+            each v,index in echo 
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.name}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.model}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.frequency}
+
+  script.                
+        function buy(intemNo)
+        {
+              alert(`you purchased Item ${intemNo+1}`)
+        }
