@@ -1,9 +1,8 @@
 var express = require('express');
+const echo_controlers= require('../controllers/echo');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('echo', { title: 'search results for echo' });
-});
-
+router.get('/', echo_controlers.echo_view_all_Page) ;
+  
 module.exports = router;

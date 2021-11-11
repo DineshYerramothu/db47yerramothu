@@ -48,17 +48,17 @@ async function recreateDB(){
   // Delete everything 
   await echo.deleteMany();
  
-  let instance1 = new echo({name:"DAN",  model:"large", frequency:20}); 
+  let instance1 = new echo({name:"DAN",  model:"elite", frequency:20}); 
   instance1.save( function(err,doc) { 
       if(err) return console.error(err); 
       console.log("First object saved") 
   }); 
-  let instance2 = new echo({name:"Estherino",  model:"medium", frequency:30}); 
+  let instance2 = new echo({name:"Estherino",  model:"pro", frequency:30}); 
   instance2.save( function(err,doc) { 
       if(err) return console.error(err); 
       console.log("Second object saved") 
   });
-  let instance3 = new echo({name:"Suzaku",  model:"small", frequency:40}); 
+  let instance3 = new echo({name:"Suzaku",  model:"elite pro max", frequency:40}); 
   instance3.save( function(err,doc) { 
       if(err) return console.error(err); 
       console.log("Third object saved") 
