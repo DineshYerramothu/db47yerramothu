@@ -1,6 +1,6 @@
 # DB47yerramothu
 
-Assignment -10 
+Assignment -11
 
 class echo(name(string), model(string), frequency(int))
 
