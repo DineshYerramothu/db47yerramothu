@@ -1,8 +1,15 @@
 var echo = require('../models/echo');
 // List of all echos
-exports.echo_list = function(req, res) {
-res.send('NOT IMPLEMENTED: echo list');
-};
+exports.echo_list = async function(req, res) {
+    try{
+    theecho = await echo.find();
+    res.send(theecho);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
 // for a specific echo.
 exports.echo_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: echo detail: ' + req.params.id);
