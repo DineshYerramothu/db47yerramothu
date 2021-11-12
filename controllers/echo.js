@@ -10,9 +10,16 @@ exports.echo_list = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
-// for a specific echo.
-exports.echo_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: echo detail: ' + req.params.id);
+// for a specific echo. 
+exports.echo_detail = async function(req, res) { 
+    console.log("detail"  + req.params.id) 
+    try { 
+        result = await echo.findById( req.params.id) 
+        res.send(result) 
+    } catch (error) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    } 
 };
 // Handle echo create on POST.
 exports.echo_create_post = async function(req, res) { 
@@ -38,10 +45,25 @@ exports.echo_create_post = async function(req, res) {
 exports.echo_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: echo delete DELETE ' + req.params.id);
 };
-// Handle echo update form on PUT.
-exports.echo_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: echo update PUT' + req.params.id);
-};
+//Handle echo update form on PUT. 
+exports.echo_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await echo.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.name)  toUpdate.name= req.body.name; 
+        if(req.body.model) toUpdate.model = req.body.model; 
+        if(req.body.frequency) toUpdate.frequency = req.body.frequency; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`); 
+    } 
+}; 
 
 // VIEWS
 // Handle a show all view 
