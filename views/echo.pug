@@ -8,9 +8,13 @@ block content
   div(class="container-fluid")
         div(class="row")
             each v,index in items 
+                div(class="card text-white bg-dark mb-3" class='col' class='card' class='card-body' class='card-text' onclick='buy('+index+')') #{o} 
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.name}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.model}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.frequency}
+                a(href="echo/update/?id="+v.id) Update
+                a(href="echo/detail/?id="+v.id) View
+                a(href="echo/delete/?id="+v.id) Delete
   script.                
         function buy(intemNo)
         {
