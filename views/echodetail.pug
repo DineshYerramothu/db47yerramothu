@@ -1,11 +1,13 @@
 extends layout
 block content
  h1= title
-
+ - let id = toShow.id
  - let name = toShow.name
  - let model = toShow.model
  - let frequency = toShow.frequency
- div
+ div.row
+ div(class='echoAttr mr-3') echo id is: 
+ div #{id} 
  div.row
  div(class='echoAttr mr-3') echo name is:
  div #{name}

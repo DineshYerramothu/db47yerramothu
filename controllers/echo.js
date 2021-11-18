@@ -103,3 +103,44 @@ exports.echo_view_one_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+
+ 
+exports.echo_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('echocreate', { title: 'echo Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+};
+
+// Handle building the view for updating a costume. 
+// query provides the id 
+exports.echo_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await echo.findById(req.query.id) 
+        res.render('echoupdate', { title: 'echo Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+};
+
+// Handle a delete one view with id from query 
+exports.echo_delete_Page = async function(req, res) { 
+    console.log("Delete view for id "  + req.query.id) 
+    try{ 
+        result = await echo.findById(req.query.id) 
+        res.render('echodelete', { title: 'echo Delete', toShow: 
+result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ 
