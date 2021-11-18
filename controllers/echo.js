@@ -77,3 +77,15 @@ exports.echo_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`);
         }
     };
+
+    exports.echo_delete = async function(req, res) { 
+        console.log("delete "  + req.params.id) 
+        try { 
+            result = await echo.findByIdAndDelete( req.params.id) 
+            console.log("Removed " + result) 
+            res.send(result) 
+        } catch (err) { 
+            res.status(500) 
+            res.send(`{"error": Error deleting ${err}}`); 
+        } 
+    }; 

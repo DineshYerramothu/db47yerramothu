@@ -5,4 +5,6 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', echo_controlers.echo_view_all_Page) ;
   
+router.get('/detail', echo_controlers.echo_view_one_Page);
+
 module.exports = router;

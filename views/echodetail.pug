@@ -1,0 +1,20 @@
+extends layout
+block content
+ h1= title
+ - let echoid = toShow._id
+ - let echo_type = toShow.echo_type
+ - let echocost = toShow.cost
+ - let echosize = toShow.size
+ div
+ div.row
+ div(class='echoAttr mr-3') echo ID is:
+ div #{echoid}
+ div.row
+ div(class='echoAttr mr-3') echo Type is:
+ div #{echo_type}
+ div.row
+ div(class='echoAttr mr-3') echo Size is:
+ div #{echosize}
+ div.row
+ div(class='echoAttr mr-3') echo Cost is:
+ div #{echocost}
