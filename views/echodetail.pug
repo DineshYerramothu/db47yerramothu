@@ -1,20 +1,18 @@
 extends layout
 block content
  h1= title
- - let echoid = toShow._id
- - let echo_type = toShow.echo_type
- - let echocost = toShow.cost
- - let echosize = toShow.size
+
+ - let name = toShow.name
+ - let model = toShow.model
+ - let frequency = toShow.frequency
  div
  div.row
- div(class='echoAttr mr-3') echo ID is:
- div #{echoid}
+ div(class='echoAttr mr-3') echo name is:
+ div #{name}
  div.row
- div(class='echoAttr mr-3') echo Type is:
- div #{echo_type}
+ div(class='echoAttr mr-3') echo model is:
+ div #{model}
  div.row
- div(class='echoAttr mr-3') echo Size is:
- div #{echosize}
- div.row
- div(class='echoAttr mr-3') echo Cost is:
- div #{echocost}
+ div(class='echoAttr mr-3') echo frequency is:
+ div #{frequency}
+ 

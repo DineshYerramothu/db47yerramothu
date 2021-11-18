@@ -28,7 +28,7 @@ exports.echo_create_post = async function(req, res) {
     // We are looking for a body, since POST does not have query parameters. 
     // Even though bodies can be in many different formats, we will be picky 
     // and require that it be a json object 
-    // {"costume_type":"goat", "cost":12, "size":"large"} 
+    // {"echo_type":"goat", "cost":12, "size":"large"} 
     document.name = req.body.name; 
     document.model = req.body.model; 
     document.frequency = req.body.frequency; 
@@ -89,3 +89,17 @@ exports.echo_view_all_Page = async function(req, res) {
             res.send(`{"error": Error deleting ${err}}`); 
         } 
     }; 
+
+// Handle a show one view with id specified by query
+exports.echo_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await echo.findById( req.query.id)
+    res.render('echodetail',
+   { title: 'echo Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };
