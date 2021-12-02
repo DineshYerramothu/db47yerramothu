@@ -6,11 +6,18 @@ block content
   p Search results echo
   p 
   div(class="container-fluid")
-    div(class="row m-1")
-      each item in items
-         - let destination = `dispatch(\"/echo/update?id=${item._id}\")`
-         div(class="row-sm-2", class="m-1") Item #{item.name}(#{item.model}) is #{item.frequency}
-            button.btn( class="btn-primary ml-1", onclick= destination) Update
+      div(class="row")
+          - let destination1 = `dispatch(\"/echo/create\")`
+          button.btn(class="btn-success ms-1", style="width: 150px" onclick= destination1) Create            
+          - let echo = results
+          each v, index in echo 
+              - let destination = `dispatch(\"/echo/update?id=${v._id}\")`
+              - let destination2 = `dispatch(\"/echo/delete?id=${v._id}\")`
+              - let destination3 = `dispatch(\"/echo/detail?id=${v._id}\")`
+              div(class="row-sm-2", class="m-1") Item #{v.name} #{v.model} #{v.frequency}
+                  button.btn(class="btn-primary ms-1", onclick= destination) Update
+                  button.btn(class="btn-info ms-1", onclick= destination3) Detail
+                  button.btn(class="btn-danger ms-1", onclick= destination2) Delete
 
   script.
     function dispatch(path){

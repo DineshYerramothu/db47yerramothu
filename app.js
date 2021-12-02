@@ -37,8 +37,6 @@ var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
 var echo = require("./models/echo");
-
-
 var app = express();
 
 // view engine setup
@@ -77,12 +75,12 @@ async function recreateDB(){
   // Delete everything 
   await echo.deleteMany();
  
-  let instance1 = new echo({name:"DAN",  model:"elite", frequency:20}); 
+  let instance1 = new echo({name:"DAN",  model:"elite", frequency:30}); 
   instance1.save( function(err,doc) { 
       if(err) return console.error(err); 
       console.log("First object saved") 
   }); 
-  let instance2 = new echo({name:"Estherino",  model:"pro", frequency:30}); 
+  let instance2 = new echo({name:"Estherino",  model:"pro", frequency:25}); 
   instance2.save( function(err,doc) { 
       if(err) return console.error(err); 
       console.log("Second object saved") 
