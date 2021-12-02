@@ -1,16 +1,23 @@
 var express = require('express');
 const echo_controlers= require('../controllers/echo');
 var router = express.Router();
+const secured = (req, res, next) => { 
+    if (req.user){ 
+      return next(); 
+    } 
+    req.session.returnTo = req.originalUrl; 
+    res.redirect("/login"); 
+  } 
 
 /* GET home page. */
 router.get('/', echo_controlers.echo_view_all_Page) ;
   
 router.get('/detail', echo_controlers.echo_view_one_Page);
 
-router.get('/create', echo_controlers.echo_create_Page);
+router.get('/create', secured,echo_controlers.echo_create_Page);
  
-router.get('/update', echo_controlers.echo_update_Page);
+router.get('/update', secured,echo_controlers.echo_update_Page);
 
-router.get('/delete', echo_controlers.echo_delete_Page); 
+router.get('/delete', secured,echo_controlers.echo_delete_Page); 
 
 module.exports = router;
